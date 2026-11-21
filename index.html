@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Skycare Mongolia | KF94 маск</title>
+<meta name="description" content="Хөх тэнгэрээ буцааж ав. Солонгос KF94 маск. 50 ширхэг 39,900₮. 2 хайрцаг авбал хүргэлт үнэгүй + 5 маск бэлэг.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="seq/001.webp">
+<style>
+:root{--p:#5b34d6;--p2:#7d5cff;--lil:#c9bbff;--ink:#f6f3ff;--muted:#aaa2c8;--line:rgba(255,255,255,.12)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,system-ui,sans-serif;color:var(--ink);background:#0b0716;line-height:1.55;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+h1,h2,h3,.disp{font-family:Montserrat,Inter,sans-serif;letter-spacing:-.025em}
+h1{font-size:clamp(40px,5.6vw,86px);line-height:1.02;font-weight:900}
+h2{font-size:clamp(30px,4vw,60px);line-height:1.06;font-weight:800}
+.grad{background:linear-gradient(95deg,#fff 0%,var(--lil) 55%,var(--p2) 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.eyebrow{font-size:12px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--lil);margin-bottom:18px;display:flex;align-items:center;gap:10px}
+.eyebrow::before{content:"";width:28px;height:1px;background:var(--lil)}
+.center .eyebrow{justify-content:center}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:#fff;color:#1a0f3d;text-decoration:none;font-weight:800;font-size:16px;padding:16px 28px;border-radius:99px;border:0;cursor:pointer;transition:transform .2s,box-shadow .2s;box-shadow:0 10px 40px rgba(125,92,255,.35)}
+.btn:hover{transform:translateY(-2px);box-shadow:0 14px 50px rgba(125,92,255,.55)}
+.btn.ghost{background:rgba(255,255,255,.06);color:#fff;border:1px solid rgba(255,255,255,.3);box-shadow:none;backdrop-filter:blur(8px)}
+.btn.pur{background:var(--p);color:#fff}
+.ctas{display:flex;gap:12px;margin-top:30px;flex-wrap:wrap}
+.center .ctas{justify-content:center}
+
+header{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:18px 26px}
+.logo{font-weight:800;font-size:24px;letter-spacing:-.04em}
+.logo sup{font-size:11px;color:var(--lil);margin-left:2px;font-weight:700}
+.hbtn{font-weight:800;font-size:14px;text-decoration:none;padding:10px 18px;border-radius:99px;border:1px solid rgba(255,255,255,.25);backdrop-filter:blur(10px);background:rgba(10,6,20,.3)}
+
+/* ---------- scene layers ---------- */
+.sticky{position:sticky;top:0;height:100vh;overflow:hidden}
+.layer{position:absolute;inset:0;will-change:opacity,clip-path}
+.layer .bg{position:absolute;inset:0;background-size:cover;background-position:center}
+.layer .fg{position:absolute;top:0;left:50%;height:100%;width:auto;transform-origin:50% 45%;will-change:transform;
+  -webkit-mask:linear-gradient(90deg,transparent,#000 14%,#000 86%,transparent);mask:linear-gradient(90deg,transparent,#000 14%,#000 86%,transparent)}
+.shade{position:absolute;inset:0;pointer-events:none}
+#fx{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.flash{position:absolute;inset:0;background:radial-gradient(circle at 50% 38%,rgba(255,255,255,.9),rgba(201,187,255,.4) 30%,transparent 60%);opacity:0;pointer-events:none;mix-blend-mode:screen}
+
+.txt{position:absolute;opacity:0;will-change:opacity,transform;pointer-events:none}
+.txt.on{pointer-events:auto}
+.txt p{font-size:clamp(16px,1.35vw,19px);color:#ddd6f3;margin-top:18px;max-width:430px}
+.L{left:5vw;top:50%;max-width:min(430px,28vw)}
+.R{right:5vw;top:50%;max-width:min(430px,28vw);text-align:left}
+.T{left:0;right:0;top:9vh;text-align:center}
+.B{left:0;right:0;bottom:8vh;text-align:center}
+.meter{display:inline-flex;gap:14px;align-items:center;margin-top:20px;padding:12px 20px;border-radius:16px;border:1px solid var(--line);background:rgba(10,6,20,.45);backdrop-filter:blur(8px)}
+.meter b{font-family:Montserrat;font-weight:800;font-size:28px;color:var(--lil)}
+.meter small{color:var(--muted);text-align:left;line-height:1.3}
+.chips{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:20px}
+.chips span{font-weight:800;font-size:12px;letter-spacing:.05em;padding:9px 14px;border-radius:99px;border:1px solid rgba(255,255,255,.45);background:rgba(255,255,255,.14);backdrop-filter:blur(6px)}
+.hint{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);font-size:11px;letter-spacing:.22em;color:#d8d0f0;text-align:center;transition:opacity .3s}
+.hint i{display:block;width:1px;height:40px;margin:10px auto 0;background:linear-gradient(var(--lil),transparent);animation:hint 1.8s ease-in-out infinite}
+@keyframes hint{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+.prog{position:absolute;right:18px;top:50%;transform:translateY(-50%);display:grid;gap:10px}
+.prog i{width:4px;height:20px;border-radius:4px;background:rgba(255,255,255,.2);transition:all .3s}
+.prog i.on{background:var(--lil);height:34px}
+
+#story{height:560vh;position:relative}
+#mom{height:330vh;position:relative}
+#mom .line{display:block;font-family:Montserrat;font-weight:700;font-size:clamp(20px,2.1vw,32px);line-height:1.3;margin:0 0 .7em;opacity:.15;transform:translateY(12px);transition:opacity .6s,transform .6s}
+#mom .line.lit{opacity:1;transform:none}
+#mom .line b{color:var(--lil)}
+#mom .final{font-size:clamp(28px,3.4vw,52px);font-weight:900}
+
+/* ---------- content ---------- */
+.after{position:relative;z-index:5;background:#0b0716}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+.sec{padding:110px 0}
+.lead{font-size:18px;color:var(--muted);max-width:580px}
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.pic{position:relative;border-radius:30px;overflow:hidden;border:1px solid var(--line);box-shadow:0 40px 90px rgba(0,0,0,.55)}
+.pic img{width:100%;display:block;transform:scale(1.08);transition:transform 1.6s cubic-bezier(.2,.7,.2,1)}
+.reveal.in .pic img,.pic.in img{transform:scale(1)}
+.pic .tag{position:absolute;left:16px;bottom:16px;font-size:12px;font-weight:800;letter-spacing:.06em;padding:8px 12px;border-radius:99px;background:rgba(11,7,22,.75);backdrop-filter:blur(6px)}
+.quote{font-family:Montserrat;font-weight:700;font-size:clamp(20px,2vw,28px);line-height:1.35;margin-top:22px}
+.quote b{color:var(--lil)}
+
+.offers{display:grid;grid-template-columns:1fr 1.08fr;gap:20px;margin-top:34px}
+.offer{position:relative;border:1px solid var(--line);border-radius:26px;padding:28px;background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.01));display:flex;flex-direction:column;gap:12px}
+.offer.best{border-color:rgba(201,187,255,.55);background:radial-gradient(120% 80% at 80% 0%,rgba(125,92,255,.35),transparent 60%),linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.01))}
+.ribbon{align-self:flex-start;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#1a0f3d;background:var(--lil);padding:6px 11px;border-radius:99px}
+.offer h3{font-size:18px;font-weight:800}
+.big{font-family:Montserrat;font-size:38px;font-weight:800;letter-spacing:-.03em}
+.big small{font-family:Inter;font-size:15px;color:var(--muted);font-weight:600;letter-spacing:0}
+.offer ul{list-style:none;display:grid;gap:8px;flex:1}
+.offer li{display:flex;gap:10px;color:#e2dcf6;font-size:15px}
+.offer li::before{content:"";flex:0 0 6px;height:6px;margin-top:8px;border-radius:50%;background:var(--lil)}
+.per{color:var(--lil);font-weight:700;font-size:14px}
+.offer .btn{width:100%;padding:14px 18px}
+
+.certs{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:36px}
+.cert{border:1px solid var(--line);border-radius:22px;padding:22px;background:rgba(255,255,255,.02)}
+.cert b{font-family:Montserrat;font-weight:800;font-size:20px;display:block;margin-bottom:6px}
+.cert span{color:var(--muted);font-size:14px}
+.guar{display:grid;grid-template-columns:auto 1fr;gap:34px;align-items:center;border:1px solid var(--line);border-radius:28px;padding:40px;background:radial-gradient(100% 100% at 0% 50%,rgba(91,52,214,.22),transparent 60%)}
+.seal{width:130px;height:130px;border-radius:50%;display:grid;place-items:center;text-align:center;font-family:Montserrat;font-weight:800;font-size:13px;line-height:1.25;border:1px solid rgba(201,187,255,.55);position:relative}
+.seal::after{content:"";position:absolute;inset:8px;border-radius:50%;border:1px dashed rgba(201,187,255,.4);animation:spin 30s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.b2b{display:grid;grid-template-columns:1.3fr 1fr;gap:30px;align-items:center;border-radius:28px;padding:44px;background:radial-gradient(100% 120% at 100% 100%,rgba(125,92,255,.3),transparent 60%),#120b26;border:1px solid var(--line)}
+.b2b ul{list-style:none;display:grid;gap:8px;margin-top:16px;color:#e2dcf6}
+.b2b li::before{content:"→ ";color:var(--lil)}
+.order{border:1px solid var(--line);border-radius:28px;padding:34px;max-width:640px;margin:40px auto 0;background:rgba(255,255,255,.02)}
+.field{display:grid;gap:8px;margin-bottom:16px}
+.field label{font-weight:700;font-size:14px;color:#e2dcf6}
+.field input,.field textarea{font:inherit;font-size:16px;color:#fff;padding:14px 16px;border:1px solid rgba(255,255,255,.15);border-radius:14px;background:rgba(255,255,255,.04)}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--lil)}
+.qty{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.qty button{font:inherit;font-weight:800;color:#e2dcf6;padding:14px 6px;border-radius:14px;border:1px solid rgba(255,255,255,.15);background:transparent;cursor:pointer}
+.qty button.on{border-color:var(--lil);color:#1a0f3d;background:var(--lil)}
+.total{display:flex;justify-content:space-between;align-items:center;padding:16px 0;border-top:1px dashed rgba(255,255,255,.15);margin-top:6px;color:#e2dcf6}
+.total b{font-family:Montserrat;font-weight:800;font-size:26px;color:#fff}
+.note{font-size:13px;color:var(--muted);margin-top:10px}
+.result{display:none;margin-top:18px;border:1px solid rgba(201,187,255,.4);border-radius:16px;padding:18px;background:rgba(125,92,255,.08)}
+.result pre{white-space:pre-wrap;font-family:inherit;font-size:14px;color:#efeaff;background:rgba(0,0,0,.3);border-radius:12px;padding:14px;margin:12px 0}
+.result .row{display:flex;gap:10px;flex-wrap:wrap}
+.result .btn{font-size:15px;padding:12px 20px}
+details{border-bottom:1px solid var(--line);padding:20px 0}
+summary{font-weight:700;font-size:17px;cursor:pointer;list-style:none}
+summary::after{content:"+";float:right;color:var(--lil);font-size:22px;line-height:1}
+details[open] summary::after{content:"–"}
+details p{margin-top:10px;color:var(--muted)}
+footer{padding:50px 0 120px;color:var(--muted);font-size:14px;text-align:center;border-top:1px solid var(--line)}
+.bar{position:fixed;left:50%;bottom:16px;z-index:60;transform:translate(-50%,150%);display:flex;gap:16px;align-items:center;padding:10px 10px 10px 22px;border-radius:99px;background:rgba(18,10,38,.82);backdrop-filter:blur(14px);border:1px solid rgba(201,187,255,.25);transition:transform .5s cubic-bezier(.2,.7,.2,1);white-space:nowrap}
+.bar.show{transform:translate(-50%,0)}
+.bar .t{font-size:13px;line-height:1.25;color:var(--muted)}
+.bar .t b{display:block;color:#fff;font-size:15px}
+.bar .btn{padding:12px 22px;font-size:15px}
+
+
+/* ---------- after: atmosphere ---------- */
+.after{background:transparent;isolation:isolate}
+.after::before{content:"";position:absolute;inset:0;z-index:-2;background:#0b0716}
+.aurora{position:absolute;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
+.aurora i{position:absolute;border-radius:50%;filter:blur(90px);opacity:.55;animation:float 26s ease-in-out infinite alternate}
+.aurora i:nth-child(1){width:60vw;height:60vw;left:-15vw;top:6%;background:radial-gradient(circle,#5b34d6,transparent 65%)}
+.aurora i:nth-child(2){width:50vw;height:50vw;right:-12vw;top:24%;background:radial-gradient(circle,#2f5fd0,transparent 65%);animation-duration:32s;animation-delay:-6s}
+.aurora i:nth-child(3){width:55vw;height:55vw;left:10vw;top:46%;background:radial-gradient(circle,#8a4dff,transparent 65%);animation-duration:30s;animation-delay:-12s;opacity:.4}
+.aurora i:nth-child(4){width:60vw;height:60vw;right:-10vw;top:68%;background:radial-gradient(circle,#4b2ab8,transparent 65%);animation-duration:36s;animation-delay:-3s}
+.aurora i:nth-child(5){width:70vw;height:50vw;left:15vw;top:86%;background:radial-gradient(circle,#3b6fe0,transparent 65%);opacity:.35}
+@keyframes float{to{transform:translate(8vw,-6vh) scale(1.18)}}
+.gridbg{position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.35;
+  background-image:linear-gradient(rgba(201,187,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(201,187,255,.07) 1px,transparent 1px);background-size:64px 64px;
+  -webkit-mask:radial-gradient(ellipse 80% 60% at 50% 40%,#000,transparent 75%);mask:radial-gradient(ellipse 80% 60% at 50% 40%,#000,transparent 75%)}
+.skyband{position:relative;height:min(70vh,640px);display:flex;align-items:flex-end;justify-content:center;text-align:center;padding:0 24px 70px;overflow:hidden}
+.skyband .im{position:absolute;inset:0;background:url(img/sky.webp) center 70%/cover;transform:scale(1.1);
+  -webkit-mask:linear-gradient(180deg,#000 30%,transparent 100%);mask:linear-gradient(180deg,#000 30%,transparent 100%);opacity:.9}
+.skyband .im::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,7,22,.15),rgba(11,7,22,.65))}
+.skyband h2{position:relative;font-size:clamp(30px,4.6vw,66px);text-shadow:0 6px 40px rgba(10,6,30,.6)}
+.skyband p{position:relative;color:#e6e0fa;margin-top:14px;font-size:18px}
+.marquee{position:relative;overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:rgba(91,52,214,.12);backdrop-filter:blur(6px);transform:rotate(-1.5deg);margin:10px -2vw 40px}
+.marquee div{display:flex;gap:42px;white-space:nowrap;padding:16px 0;width:max-content;animation:mq 28s linear infinite;font-family:Montserrat;font-weight:800;font-size:clamp(16px,1.6vw,22px);letter-spacing:.04em}
+.marquee span{display:inline-flex;align-items:center;gap:42px}
+.marquee span::after{content:"✦";color:var(--lil)}
+@keyframes mq{to{transform:translateX(-50%)}}
+#snow{position:fixed;inset:0;z-index:6;pointer-events:none;opacity:0;transition:opacity .8s}
+#snow.on{opacity:1}
+.after .wrap,.after footer{position:relative;z-index:1}
+.glass{background:rgba(20,12,44,.45)!important;backdrop-filter:blur(14px)}
+footer{position:relative;overflow:hidden;padding-top:90px!important}
+footer .mtn{position:absolute;left:0;right:0;bottom:0;width:100%;height:220px;z-index:-1;opacity:.6}
+footer .word{position:absolute;left:50%;bottom:30px;transform:translateX(-50%);font-family:Inter;font-weight:900;font-size:clamp(90px,19vw,300px);letter-spacing:-.06em;line-height:1;color:transparent;-webkit-text-stroke:1px rgba(201,187,255,.14);z-index:-1;white-space:nowrap;pointer-events:none}
+
+
+/* ---------- city scene background ---------- */
+.scene{position:sticky;top:0;height:100vh;margin-bottom:-100vh;z-index:-1;overflow:hidden;pointer-events:none}
+.scene img{position:absolute;left:0;top:-4%;width:100%;height:112%;object-fit:cover;object-position:center bottom;will-change:transform}
+.scene::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,7,22,.05) 0%,rgba(11,7,22,.25) 40%,rgba(11,7,22,.55) 100%)}
+.aurora{mix-blend-mode:screen;opacity:.45}
+.skyband .im{display:none}
+/* ---------- brand logo ---------- */
+.brand{display:inline-flex;align-items:center;gap:9px;text-decoration:none}
+.brand .mark{width:30px;height:30px;filter:drop-shadow(0 0 10px rgba(125,92,255,.7));transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.brand:hover .mark{transform:rotate(45deg) scale(1.08)}
+.brand .wm{font-family:Montserrat;font-weight:800;font-size:25px;letter-spacing:-.05em;line-height:1;
+  background:linear-gradient(110deg,#fff 0%,#fff 38%,#b9a6ff 47%,#fff 52%,#fff 100%);background-size:260% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:sheen 5.5s ease-in-out infinite}
+.brand .kf{font-size:10px;font-weight:800;letter-spacing:.12em;color:var(--lil);border:1px solid rgba(201,187,255,.45);padding:3px 7px;border-radius:99px;background:rgba(91,52,214,.18)}
+@keyframes sheen{0%,20%{background-position:100% 0}60%,100%{background-position:0% 0}}
+.brand.lg .mark{width:54px;height:54px}.brand.lg .wm{font-size:48px}.brand.lg .kf{font-size:12px}
+
+@media (max-width:820px){
+  header{padding:14px 18px}
+  .layer .bg{display:none}
+  .layer .fg{left:0;width:100%;height:100%;object-fit:cover;-webkit-mask:none;mask:none}
+  .shade.mob{background:linear-gradient(180deg,rgba(8,5,16,.55) 0%,transparent 28%,transparent 50%,rgba(8,5,16,.85) 82%)}
+  .L,.R{left:22px;right:22px;top:auto;bottom:9vh;max-width:none}
+  .T{top:11vh;padding:0 20px}.B{bottom:7vh;padding:0 20px}
+  .txt p{max-width:none}
+  #mom .R{bottom:8vh}
+  .prog{right:8px}
+  .hint{display:none}
+  .split,.offers,.b2b{grid-template-columns:1fr}
+  .split{gap:32px}
+  .offer.best{order:-1}
+  .certs{grid-template-columns:1fr 1fr}
+  .guar{grid-template-columns:1fr;text-align:center;justify-items:center;padding:30px}
+  .sec{padding:80px 0}.b2b{padding:28px}.order{padding:22px}
+  .bar{padding-left:16px;gap:10px}.bar .t{font-size:12px}
+}
+</style>
+</head>
+<body>
+<header>
+  <a class="brand" href="#" aria-label="Skycare KF94"><svg class="mark" viewBox="0 0 40 40" aria-hidden="true"><defs><linearGradient id="lg1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#b9a6ff"/></linearGradient></defs><path d="M14 3h12l11 11v12L26 37H14L3 26V14Z" fill="none" stroke="url(#lg1)" stroke-width="3.2" stroke-linejoin="round"/><path d="M16.5 10h7v6.5H30v7h-6.5V30h-7v-6.5H10v-7h6.5Z" fill="url(#lg1)"/></svg><span class="wm">skycare</span><span class="kf">KF94</span></a>
+  <a class="hbtn" href="#order">Захиалах</a>
+</header>
+
+<!-- =============== STORY =============== -->
+<section id="story">
+  <div class="sticky" id="stage">
+    <div class="layer" id="L1"><div class="bg" style="background-image:url(img/smog_bg.webp)"></div><canvas id="seq" style="position:absolute;inset:0;width:100%;height:100%"></canvas><img class="fg" id="first" src="seq/001.webp" alt="Утаатай Улаанбаатар дээр хөвж буй Skycare KF94 хайрцаг" style="visibility:hidden"></div>
+    <div class="layer" id="L3" style="clip-path:circle(0% at 50% 38%)"><div class="bg" style="background-image:url(img/sky_bg.webp)"></div><img class="fg" src="img/sky.webp" alt="Цэлмэг хөх тэнгэр дэх KF94 маск"></div>
+    <div class="shade" style="background:linear-gradient(90deg,rgba(8,5,16,.75),transparent 34%,transparent 66%,rgba(8,5,16,.6))"></div>
+    <div class="shade mob"></div>
+    <canvas id="fx"></canvas>
+    <div class="flash" id="flash"></div>
+
+    <div class="txt L" id="s0">
+      <div class="eyebrow">Skycare · KF94 · Made in Korea</div>
+      <h1>Хөх тэнгэрээ<br><span class="grad">буцааж ав.</span></h1>
+      <p>Солонгос стандартын KF94 маск утааны нарийн тоосонцрын 94%-иас дээшийг шүүнэ.</p>
+      <div class="ctas"><a class="btn" href="#order">Захиалах · 39,900₮</a><a class="btn ghost" href="#gift">Үнэ харах</a></div>
+    </div>
+    <div class="txt R" id="s1">
+      <div class="eyebrow">Асуудал</div>
+      <h2>Утааг нүд харахгүй.<br><span class="grad">Уушиг мэднэ.</span></h2>
+      <p>Өвлийн утааны хамгийн аюултай хэсэг бол нүдэнд үл харагдах нарийн тоосонцор. Даавуун, нимгэн маск түүнийг нэвтрүүлдэг.</p>
+    </div>
+    <div class="txt L" id="s2">
+      <div class="eyebrow">Шүүлт</div>
+      <h2>Утаа<br><span class="grad">зогсоно.</span></h2>
+      <p>KF94 стандарт: 0.4 микроны тоосонцрын 94%-иас дээш хувийг шүүнэ. Melt-Blown шүүлтүүр давхарга нарийн тоосонцрыг барьж үлдээнэ.</p>
+      <div class="meter"><b id="pct">0%</b><small>тоосонцор<br>шүүгдлээ</small></div>
+    </div>
+    <div class="txt B center" id="s3">
+      <h2>Хөх тэнгэр.<br>Цэвэр агаар. Өдөр бүр.</h2>
+      <div class="chips"><span>KFDA баталгаатай</span><span>FDA бүртгэлтэй</span><span>CE 2841</span><span>ASTM Level 3</span></div>
+    </div>
+    <div class="hint" id="hint">ДООШ ГҮЙЛГЭ<i></i></div>
+    <div class="prog" id="prog"><i></i><i></i><i></i><i></i></div>
+  </div>
+</section>
+
+<!-- =============== MOTHER =============== -->
+<section id="mom">
+  <div class="sticky" id="momStage">
+    <div class="layer"><div class="bg" style="background-image:url(img/mother_bg.webp)"></div><img class="fg" id="momImg" src="img/mother.webp" alt="KF94 маск зүүсэн Монгол ээж өглөөний нарны гэрэлд"></div>
+    <div class="shade" style="background:linear-gradient(90deg,rgba(8,5,16,.55),transparent 34%,transparent 60%,rgba(8,5,16,.8))"></div>
+    <div class="shade mob"></div>
+    <div class="txt R" id="momTxt" style="opacity:1;transform:translateY(-50%)">
+      <span class="line">Ээж чинь өглөө бүр <b>утаан дундуур</b> ажилдаа явдаг.</span>
+      <span class="line">Аав чинь гадаа <b>машинаа халаадаг.</b></span>
+      <span class="line">Чи өөрөө буудал дээр <b>автобус хүлээдэг.</b></span>
+      <span class="line final">Тэд бүгд <span class="grad">цэвэр амьсгал</span> хүртэх ёстой.</span>
+    </div>
+  </div>
+</section>
+
+<!-- =============== CONTENT =============== -->
+<div class="after">
+  <div class="scene"><picture><source media="(max-width:820px)" srcset="img/ub_v.webp"><img id="ubImg" src="img/ub_h.webp" alt="" loading="lazy"></picture></div>
+  <div class="aurora"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="gridbg"></div>
+  <section class="skyband">
+    <div class="im"></div>
+    <div><h2>Энэ өвөл <span class="grad">хайртай хүмүүсээ</span><br>цэвэр агаараар хамгаал.</h2><p>Утааны улирал 11 сараас 3 сар хүртэл үргэлжилдэг. Бэлтгэлээ одоо базаа.</p></div>
+  </section>
+  <div class="marquee"><div><span>KF94</span><span>KFDA баталгаатай</span><span>FDA бүртгэлтэй</span><span>CE 2841</span><span>ASTM Level 3</span><span>Made in Korea</span><span>Нэг бүрчлэн савлагаатай</span><span>KF94</span><span>KFDA баталгаатай</span><span>FDA бүртгэлтэй</span><span>CE 2841</span><span>ASTM Level 3</span><span>Made in Korea</span><span>Нэг бүрчлэн савлагаатай</span></div></div>
+  <section class="sec" id="gift">
+    <div class="wrap split">
+      <div class="reveal"><div class="pic"><img src="img/gift.webp" alt="Ээждээ Skycare маск бэлэглэж буй гар" loading="lazy"></div></div>
+      <div class="reveal">
+        <div class="eyebrow">Хайртай хүмүүстээ</div>
+        <h2>Нэгийг өөртөө.<br><span class="grad">Нэгийг ээж аавдаа.</span></h2>
+        <p class="quote">Энэ өвөл хайртай хүмүүсийнхээ амьсгалыг <b>бэлэглэ.</b></p>
+        <p class="lead" style="margin-top:16px">2 хайрцаг авбал хүргэлт үнэгүй, дээр нь 5 маск бэлэг. Нэг маск 760₮ хүрэхгүй.</p>
+        <div class="ctas"><a class="btn pur" href="#order" data-pick="2">2 хайрцаг захиалах</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="price" style="padding-top:0">
+    <div class="wrap split">
+      <div class="reveal" style="order:2"><div class="pic"><img src="img/podium.webp" alt="Skycare KF94 хайрцаг, савлагаа, маск" loading="lazy"></div></div>
+      <div class="reveal">
+        <div class="eyebrow">Үнэ</div>
+        <h2>Нэг маск <span class="grad">800₮</span> хүрэхгүй.</h2>
+        <div class="offers">
+          <div class="offer glass">
+            <h3>1 хайрцаг</h3>
+            <div class="big">39,900₮ <small>/ 50ш</small></div>
+            <ul><li>50 ширхэг, нэг бүрчлэн савлагаатай</li><li>Хүргэлт 8,000₮</li><li>3 хоногийн буцаах баталгаа</li></ul>
+            <div class="per">Нийт 47,900₮</div>
+            <a class="btn ghost" href="#order" data-pick="1">1 хайрцаг авах</a>
+          </div>
+          <div class="offer best glass">
+            <span class="ribbon">Гэр бүлийн сонголт</span>
+            <h3>2 хайрцаг + бэлэг</h3>
+            <div class="big">79,800₮ <small>/ 105ш</small></div>
+            <ul><li>100 ширхэг KF94 маск</li><li><b>+5 маск бэлэг</b></li><li><b>Хүргэлт үнэгүй</b></li><li>3 хоногийн буцаах баталгаа</li></ul>
+            <div class="per">Нэг маск 760₮ хүрэхгүй</div>
+            <a class="btn pur" href="#order" data-pick="2">2 хайрцаг авах</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" style="padding-top:0">
+    <div class="wrap">
+      <div class="reveal"><div class="eyebrow">Баталгаа</div><h2>Ярихаас илүү <span class="grad">баталгаа.</span></h2></div>
+      <div class="certs">
+        <div class="cert reveal glass"><b>KFDA</b><span>Солонгосын Хүнс, Эмийн Газрын баталгаатай</span></div>
+        <div class="cert reveal glass"><b>FDA</b><span>АНУ-ын FDA-д бүртгэлтэй</span></div>
+        <div class="cert reveal glass"><b>CE 2841</b><span>Европын тэмдэглэгээтэй</span></div>
+        <div class="cert reveal glass"><b>ASTM L3</b><span>Шүүлтийн өндөр түвшний ангилал</span></div>
+        <div class="cert reveal glass"><b>ISO</b><span>9001 · 14001 · 13485 үйлдвэрлэл</span></div>
+        <div class="cert reveal glass"><b>Korea</b><span>Солонгост үйлдвэрлэсэн</span></div>
+        <div class="cert reveal glass"><b>1 ш</b><span>Маск бүр тусдаа ариун савлагаатай</span></div>
+        <div class="cert reveal glass"><b>Melt-Blown</b><span>Нарийн тоосонцор барих шүүлтүүр</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" style="padding-top:0">
+    <div class="wrap split">
+      <div class="reveal"><div class="pic"><img src="real.jpg" alt="Skycare KF94 бодит хайрцаг ба савлагаа" loading="lazy"><span class="tag">Бодит зураг · танд очих бүтээгдэхүүн</span></div></div>
+      <div class="reveal">
+        <div class="guar" style="grid-template-columns:1fr;text-align:left;padding:34px">
+          <div class="seal">3 ХОНОГ<br>БУЦААХ<br>БАТАЛГАА</div>
+          <div>
+            <h2 style="font-size:clamp(26px,3vw,40px)">Эрсдэлгүй туршаад үз.</h2>
+            <p class="lead" style="margin-top:12px">Маскаа хүлээж аваад 3 хоногийн дотор сэтгэлд тань нийцэхгүй бол бидэнд хэлээрэй. Задлаагүй хайрцгийг буцааж авна.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" style="padding-top:0">
+    <div class="wrap">
+      <div class="b2b reveal">
+        <div>
+          <div class="eyebrow">Байгууллагад</div>
+          <h2 style="font-size:clamp(26px,3.4vw,40px)">Ажилчдаа утаанаас хамгаал.</h2>
+          <p class="lead" style="margin-top:12px">Бөөний үнэ, <b style="color:#fff">үнэгүй дээж</b> өгнө.</p>
+          <ul><li>Оффис, компани</li><li>Барилга, харуул хамгаалалт</li><li>Такси, хүргэлтийн компани</li><li>Эмийн сан, дэлгүүр</li></ul>
+        </div>
+        <div style="text-align:center">
+          <a class="btn" id="b2bBtn" target="_blank" rel="noopener">Үнэгүй дээж авах</a>
+          <p class="note">Messenger-ээр бичээд байгууллагынхаа нэрийг хэлээрэй</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="order" style="padding-top:0">
+    <div class="wrap">
+      <div class="reveal center" style="text-align:center">
+        <div class="eyebrow">Захиалга</div>
+        <h2>Захиалга өгөх</h2>
+        <p class="lead" style="margin:16px auto 0">Мэдээллээ бөглөхөд захиалгын текст бэлэн болно. Түүнийгээ Messenger-ээр бидэнд илгээгээрэй.</p>
+      </div>
+      <form class="order reveal glass" id="form" novalidate>
+        <div class="field">
+          <label>Хэдэн хайрцаг?</label>
+          <div class="qty" id="qty">
+            <button type="button" data-q="1">1 хайрцаг</button>
+            <button type="button" data-q="2" class="on">2 + бэлэг</button>
+            <button type="button" data-q="3">3+</button>
+          </div>
+        </div>
+        <div class="field" id="qtyMore" style="display:none"><label for="n">Хэдэн хайрцаг (тоо)</label><input id="n" type="number" min="3" value="3" inputmode="numeric"></div>
+        <div class="field"><label for="name">Нэр</label><input id="name" placeholder="Жишээ: Болд" autocomplete="name"></div>
+        <div class="field"><label for="phone">Утас</label><input id="phone" placeholder="8 оронтой дугаар" inputmode="tel" autocomplete="tel"></div>
+        <div class="field"><label for="addr">Хүргэлтийн хаяг</label><textarea id="addr" rows="2" placeholder="Дүүрэг, хороо, байр, тоот"></textarea></div>
+        <div class="total"><span id="sumLbl"></span><b id="sum"></b></div>
+        <button class="btn pur" type="submit" style="width:100%">Захиалах</button>
+        <p class="note" id="err" style="color:#ff9a8a;display:none"></p>
+        <div class="result" id="result">
+          <b>✓ Захиалгын текст бэлэн боллоо</b>
+          <pre id="msg"></pre>
+          <div class="row"><button type="button" class="btn ghost" id="copy">Хуулах</button><a class="btn" id="msgBtn" target="_blank" rel="noopener">Messenger нээх →</a></div>
+          <p class="note">Хуулсан текстээ Messenger-ийн чат руу буулгаад (paste) илгээгээрэй.</p>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <section class="sec" style="padding-top:0">
+    <div class="wrap" style="max-width:760px">
+      <h2 class="reveal" style="font-size:clamp(26px,3.4vw,40px)">Түгээмэл асуулт</h2>
+      <div class="reveal">
+        <details><summary>Хүүхдэд таарах уу?</summary><p>Үгүй. Энэ маск насанд хүрэгчдийн хэмжээтэй.</p></details>
+        <details><summary>Нэг маскийг хэр удаан зүүх вэ?</summary><p>KF94 маск нэг удаагийнх. Нэг өдөр зүүгээд солихыг зөвлөж байна, ялангуяа чийгтэй эсвэл бохирдсон бол.</p></details>
+        <details><summary>Хүргэлт хэр удаан бэ?</summary><p>Улаанбаатар хотод хүргэнэ. Захиалга өгсний дараа бид Messenger-ээр холбогдож, хүргэх цагийг тохирно.</p></details>
+        <details><summary>Хэрхэн төлөх вэ?</summary><p>Захиалгаа баталгаажуулсны дараа төлбөрийн мэдээллийг Messenger-ээр илгээнэ.</p></details>
+        <details><summary>Буцаах боломжтой юу?</summary><p>Тийм. Хүлээн авснаас хойш 3 хоногийн дотор задлаагүй хайрцгийг буцааж болно.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="word">skycare</div>
+    <svg class="mtn" viewBox="0 0 1440 220" preserveAspectRatio="none" aria-hidden="true">
+      <defs><linearGradient id="mg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5b34d6" stop-opacity=".55"/><stop offset="1" stop-color="#0b0716" stop-opacity="0"/></linearGradient>
+      <linearGradient id="mg2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c9bbff" stop-opacity=".35"/><stop offset="1" stop-color="#0b0716" stop-opacity="0"/></linearGradient></defs>
+      <path d="M0 170 L120 140 L220 150 L340 105 L430 120 L560 70 L640 92 L720 52 L800 84 L900 66 L1010 110 L1120 96 L1240 130 L1340 118 L1440 140 L1440 220 L0 220Z" fill="url(#mg)"/>
+      <path d="M560 70 L600 82 L640 92 L680 70 L720 52 L760 68 L800 84" fill="none" stroke="url(#mg2)" stroke-width="2"/>
+      <path d="M0 200 L160 176 L300 186 L470 160 L620 178 L780 150 L940 172 L1100 156 L1280 176 L1440 166 L1440 220 L0 220Z" fill="#0b0716" opacity=".85"/>
+    </svg>
+    <div style="margin-bottom:14px"><a class="brand lg" href="#" aria-label="Skycare KF94"><svg class="mark" viewBox="0 0 40 40" aria-hidden="true"><defs><linearGradient id="lg2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#b9a6ff"/></linearGradient></defs><path d="M14 3h12l11 11v12L26 37H14L3 26V14Z" fill="none" stroke="url(#lg2)" stroke-width="3.2" stroke-linejoin="round"/><path d="M16.5 10h7v6.5H30v7h-6.5V30h-7v-6.5H10v-7h6.5Z" fill="url(#lg2)"/></svg><span class="wm">skycare</span><span class="kf">KF94</span></a></div>
+    Улаанбаатар · <a id="fbLink" target="_blank" rel="noopener">Facebook хуудас</a>
+  </footer>
+</div>
+
+<canvas id="snow"></canvas>
+<div class="bar" id="bar">
+  <div class="t"><b>2 хайрцаг · 79,800₮</b>+5 маск бэлэг · хүргэлт үнэгүй</div>
+  <a class="btn pur" href="#order" data-pick="2">Захиалах</a>
+</div>
+
+<script>
+const PAGE_ID="61584523778449";
+const MESSENGER="https://m.me/"+PAGE_ID, FB="https://www.facebook.com/profile.php?id="+PAGE_ID;
+const PRICE=39900, DELIVERY=8000;
+const clamp=(v,a=0,b=1)=>Math.min(b,Math.max(a,v));
+const lerp=(a,b,t)=>a+(b-a)*t;
+const sm=t=>t*t*(3-2*t);
+const band=(p,a,b,f=.05)=>clamp(Math.min((p-a)/f,(b-p)/f));
+const seg=(p,a,b)=>sm(clamp((p-a)/(b-a)));
+
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add("in")}),{threshold:.2});
+document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
+
+const $=id=>document.getElementById(id);
+const story=$("story"), stage=$("stage"), L1=$("L1"), L3=$("L3"), flash=$("flash"), hint=$("hint");
+const S=[0,1,2,3].map(i=>$("s"+i)), dots=[...document.querySelectorAll("#prog i")];
+const fg3=L3.querySelector(".fg");
+const mom=$("mom"), momImg=$("momImg"), momLines=[...document.querySelectorAll("#mom .line")], momTxt=$("momTxt");
+let mobile=innerWidth<=820;
+
+/* ---------- particles ---------- */
+const cv=$("fx"), cx=cv.getContext("2d");
+let W=0,H=0,DPR=Math.min(2,devicePixelRatio||1);
+function size(){W=stage.clientWidth;H=stage.clientHeight;cv.width=W*DPR;cv.height=H*DPR;cx.setTransform(DPR,0,0,DPR,0,0);mobile=innerWidth<=820;}
+addEventListener("resize",size);size();
+const N=mobile?220:420, P=[];
+function spawn(o,edge){o.x=edge?(Math.random()<.5?-20:W+20):Math.random()*W;o.y=Math.random()*H;o.r=.8+Math.random()*2.8;o.vx=(Math.random()-.5)*.3;o.vy=-.05-Math.random()*.25;o.a=.3+Math.random()*.6;o.ph=Math.random()*6.28;}
+for(let i=0;i<N;i++){const o={};spawn(o,false);P.push(o);}
+let caught=0,total=0;
+const st={smog:1,pull:0,clean:0};
+
+function particles(t){
+  cx.clearRect(0,0,W,H);
+  const tx=W/2, ty=H*(mobile?.3:.38);
+  const vis=Math.floor(N*clamp(.12+st.smog*.88));
+  const sparkle=st.clean>.5;
+  for(let i=0;i<N;i++){
+    const o=P[i];
+    o.x+=o.vx+Math.sin(t*.0004+o.ph)*.3; o.y+=o.vy+Math.cos(t*.0003+o.ph)*.18;
+    if(st.pull>.05){
+      const dx=tx-o.x, dy=ty-o.y, d=Math.hypot(dx,dy)||1, f=st.pull*(2.4+o.r*.5);
+      o.x+=dx/d*f; o.y+=dy/d*f;
+      if(d<Math.min(W,H)*.13){total++; if(Math.random()<.94)caught++; spawn(o,true); continue;}
+    }
+    if(o.y<-10)o.y=H+10; if(o.x<-30)o.x=W+30; if(o.x>W+30)o.x=-30;
+    if(i>vis)continue;
+    if(sparkle){const tw=.5+.5*Math.sin(t*.004+o.ph);cx.fillStyle=`rgba(255,255,255,${o.a*tw*.8})`;cx.beginPath();cx.arc(o.x,o.y,o.r*.5,0,6.283);cx.fill();}
+    else{cx.fillStyle=`rgba(150,130,110,${o.a*.5})`;cx.beginPath();cx.arc(o.x,o.y,o.r,0,6.283);cx.fill();}
+  }
+}
+
+
+/* ---------- image sequence ---------- */
+const FR=121, frames=new Array(FR), seq=$("seq"), sx=seq.getContext("2d");
+let lastDrawn=-1;
+for(let i=0;i<FR;i++){const im=new Image();im.decoding="async";im.src=`seq/${String(i+1).padStart(3,"0")}.webp`;frames[i]=im;}
+function sizeSeq(){const d=Math.min(2,devicePixelRatio||1);seq.width=seq.clientWidth*d;seq.height=seq.clientHeight*d;lastDrawn=-1;}
+addEventListener("resize",sizeSeq);sizeSeq();
+function drawFrame(f){
+  let i=Math.round(f); while(i>0&&!(frames[i].complete&&frames[i].naturalWidth))i--;
+  const im=frames[i]; if(!im.complete||!im.naturalWidth)return;
+  if(i===lastDrawn&&!seq._z)return; lastDrawn=i;
+  const W=seq.width,H=seq.height,iw=im.naturalWidth,ih=im.naturalHeight;
+  let sc=mobile?Math.max(W/iw,H/ih):H/ih; sc*=seq._z||1;
+  const dw=iw*sc,dh=ih*sc,dx=(W-dw)/2,dy=(H-dh)/2;
+  sx.clearRect(0,0,W,H);
+  sx.drawImage(im,dx,dy,dw,dh);
+  if(!mobile){ /* feather left/right edges */
+    const g1=sx.createLinearGradient(dx,0,dx+dw*.14,0);g1.addColorStop(0,"rgba(0,0,0,1)");g1.addColorStop(1,"rgba(0,0,0,0)");
+    const g2=sx.createLinearGradient(dx+dw,0,dx+dw*.86,0);g2.addColorStop(0,"rgba(0,0,0,1)");g2.addColorStop(1,"rgba(0,0,0,0)");
+    sx.globalCompositeOperation="destination-out";sx.fillStyle=g1;sx.fillRect(dx-2,0,dw*.14+2,H);sx.fillStyle=g2;sx.fillRect(dx+dw*.86,0,dw*.14+2,H);sx.globalCompositeOperation="source-over";
+  }
+}
+
+
+/* ---------- snow / clean-air sparkles over content ---------- */
+(function(){
+  const c=document.getElementById("snow"),x=c.getContext("2d"),after=document.querySelector(".after");
+  let w,h,on=false,F=[];const d=Math.min(2,devicePixelRatio||1);
+  function rs(){w=innerWidth;h=innerHeight;c.width=w*d;c.height=h*d;x.setTransform(d,0,0,d,0,0);}
+  addEventListener("resize",rs);rs();
+  const n=innerWidth<820?45:90;
+  for(let i=0;i<n;i++)F.push({x:Math.random()*w,y:Math.random()*h,r:.6+Math.random()*1.8,s:.15+Math.random()*.45,p:Math.random()*6.28});
+  new IntersectionObserver(e=>{on=e[0].isIntersecting;c.classList.toggle("on",on)},{threshold:0}).observe(after);
+  function tick(t){requestAnimationFrame(tick);if(!on)return;x.clearRect(0,0,w,h);
+    for(const f of F){f.y+=f.s;f.x+=Math.sin(t*.0006+f.p)*.3;if(f.y>h+5){f.y=-5;f.x=Math.random()*w;}
+      const a=.35+.35*Math.sin(t*.002+f.p);x.fillStyle=`rgba(225,215,255,${a})`;x.beginPath();x.arc(f.x,f.y,f.r,0,6.283);x.fill();}}
+  requestAnimationFrame(tick);
+})();
+
+
+/* ---------- city scene parallax ---------- */
+(function(){const a=document.querySelector(".after"),im=document.getElementById("ubImg");
+  function f(){requestAnimationFrame(f);const r=a.getBoundingClientRect();if(r.top>innerHeight||r.bottom<0)return;
+    const p=Math.min(1,Math.max(0,-r.top/(r.height-innerHeight)));im.style.transform=`translateY(${-p*7}%) scale(${1.04-p*.04})`;}
+  requestAnimationFrame(f);})();
+
+/* ---------- loop ---------- */
+let cur={fr:0,z1:1,z3:1.1,r3:0,fl:0,smog:1,pull:0,clean:0};
+function frame(t){
+  requestAnimationFrame(frame);
+  const r=story.getBoundingClientRect();
+  const active=r.bottom>0&&r.top<innerHeight;
+  if(active){
+    const p=clamp(-r.top/(r.height-innerHeight));
+    const tg={
+      fr:seg(p,.02,.56)*(FR-1),
+      z1:1+seg(p,.56,.7)*.08,
+      r3:seg(p,.62,.8)*150,
+      z3:1.12-seg(p,.62,1)*.12,
+      fl:band(p,.6,.74,.06),
+      smog:1-seg(p,.55,.78),
+      pull:band(p,.5,.64,.04),
+      clean:seg(p,.7,.82)
+    };
+    for(const k in tg)cur[k]=lerp(cur[k],tg[k],.14);
+    st.smog=cur.smog;st.pull=cur.pull;st.clean=cur.clean;
+    const fl=Math.sin(t*.0009)*.006;
+    const base=mobile?"":"translateX(-50%) ";
+    seq._z=cur.z1+fl; drawFrame(cur.fr);
+    fg3.style.transform=base+`scale(${cur.z3+fl})`;
+    L3.style.clipPath=`circle(${cur.r3}% at 50% ${mobile?30:38}%)`;
+    flash.style.opacity=cur.fl*.85;
+    const w=[band(p,-.1,.14,.04),band(p,.17,.36,.04),band(p,.44,.64,.04),band(p,.8,1.2,.05)];
+    S.forEach((el,i)=>{el.style.opacity=w[i];el.classList.toggle("on",w[i]>.5);
+      const c=(el.classList.contains("L")||el.classList.contains("R"))&&!mobile?"translateY(-50%) ":"";
+      el.style.transform=c+`translateY(${(1-w[i])*26}px)`;});
+    dots.forEach((d,i)=>d.classList.toggle("on",w[i]>.5));
+    hint.style.opacity=p<.04?1:0;
+    if(total>0&&cur.pull>.1)$("pct").textContent=(100*caught/total).toFixed(1)+"%";
+    particles(t);
+  }
+  /* mother */
+  const m=mom.getBoundingClientRect();
+  if(m.bottom>0&&m.top<innerHeight){
+    const q=clamp(-m.top/(m.height-innerHeight));
+    momImg.style.transform=(mobile?"":"translateX(-50%) ")+`scale(${1.12-q*.12})`;
+    momLines.forEach((l,i)=>l.classList.toggle("lit",q>.08+i*.2));
+    if(!mobile)momTxt.style.transform="translateY(-50%)"; else momTxt.style.transform="none";
+  }
+}
+requestAnimationFrame(frame);
+</script>
+<script>
+/* ===== sticky bar ===== */
+const bar=document.getElementById("bar");
+addEventListener("scroll",()=>{const o=document.getElementById("order").getBoundingClientRect();
+  bar.classList.toggle("show",scrollY>innerHeight*.9&&!(o.top<innerHeight&&o.bottom>0));},{passive:true});
+
+/* ===== order ===== */
+const fmt=n=>n.toLocaleString("en-US")+"₮";
+document.getElementById("msgBtn").href=MESSENGER;document.getElementById("b2bBtn").href=MESSENGER;document.getElementById("fbLink").href=FB;
+let q=2;const qb=[...document.querySelectorAll("#qty button")],nI=document.getElementById("n");
+const boxes=()=>q>=3?Math.max(3,parseInt(nI.value)||3):q;
+function calc(){const b=boxes(),del=b>=2?0:DELIVERY,bonus=b>=2?5:0;return{b,del,bonus,pcs:b*50+bonus,total:b*PRICE+del};}
+function render(){const c=calc();document.getElementById("sum").textContent=fmt(c.total);document.getElementById("sumLbl").textContent=`${c.b} хайрцаг · ${c.pcs}ш · `+(c.del?`хүргэлт ${fmt(c.del)}`:"хүргэлт үнэгүй");}
+function setQ(v){q=v;qb.forEach(x=>x.classList.toggle("on",+x.dataset.q===v));document.getElementById("qtyMore").style.display=v>=3?"grid":"none";render();}
+qb.forEach(b=>b.addEventListener("click",()=>setQ(+b.dataset.q)));nI.addEventListener("input",render);
+document.querySelectorAll("[data-pick]").forEach(a=>a.addEventListener("click",()=>setQ(+a.dataset.pick)));
+document.getElementById("form").addEventListener("submit",e=>{e.preventDefault();
+  const name=document.getElementById("name").value.trim(),phone=document.getElementById("phone").value.trim(),addr=document.getElementById("addr").value.trim(),err=document.getElementById("err");
+  if(!name||!phone||!addr){err.textContent="Нэр, утас, хаягаа бөглөнө үү.";err.style.display="block";return;}
+  err.style.display="none";const c=calc();
+  const msg=`Сайн байна уу! Skycare KF94 маск захиалъя.
+• Тоо: ${c.b} хайрцаг (${c.pcs} ширхэг${c.bonus?", 5 бэлэг орсон":""})
+• Дүн: ${fmt(c.total)}${c.del?" (хүргэлт "+fmt(c.del)+" орсон)":" (хүргэлт үнэгүй)"}
+• Нэр: ${name}
+• Утас: ${phone}
+• Хаяг: ${addr}`;
+  document.getElementById("msg").textContent=msg;const r=document.getElementById("result");r.style.display="block";r.scrollIntoView({behavior:"smooth",block:"center"});});
+document.getElementById("copy").addEventListener("click",async e=>{const t=document.getElementById("msg").textContent;
+  try{await navigator.clipboard.writeText(t);e.target.textContent="✓ Хуулагдлаа";}
+  catch(_){const rg=document.createRange();rg.selectNodeContents(document.getElementById("msg"));const s=getSelection();s.removeAllRanges();s.addRange(rg);e.target.textContent="Сонголоо — хуулна уу";}});
+render();
+</script>
+</body>
+</html>
